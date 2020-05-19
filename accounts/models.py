@@ -15,7 +15,7 @@ class UserManager(BaseUserManager):
         user = self.model(
             email=self.normalize_email(email),
         )
-
+ 
         user.set_password(password)
         user.save(using=self._db)
         return user
@@ -52,7 +52,7 @@ class User(AbstractBaseUser):
         max_length=255,
         unique=True,
     )
-    active = models.BooleanField(default=True)
+    is_active = models.BooleanField(default=True)
     staff = models.BooleanField(default=False) # a admin user; non super-user
     admin = models.BooleanField(default=False) # a superuser
     # notice the absence of a "Password field", that is built in.
@@ -94,6 +94,6 @@ class User(AbstractBaseUser):
         return self.admin
 
     @property
-    def is_active(self):
+    def active(self):
         "Is the user active?"
-        return self.active
+        return self.is_active

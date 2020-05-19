@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'accounts',
     'bootstrap4',
+    'django_extensions',
 ]
 
 MIDDLEWARE = [
@@ -130,4 +131,7 @@ LOGIN_REDIRECT_URL = 'home'
 LOGOUT_REDIRECT_URL = 'home'
 
 # Configuration for emails
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST ='127.0.0.1'
+EMAIL_PORT = 1025
+EMAIL_FILE_PATH = os.path.join(BASE_DIR, "sent_emails")
