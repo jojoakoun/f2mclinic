@@ -22,7 +22,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('',views.HomePageView.as_view(),name='home'),
     path('accounts/',include('accounts.urls',namespace='accounts')),
-    # path('accounts/',RedirectView.as_view(url='accounts:password_reset_done'),name='password_reset_done'),
-    # # path('accounts/',RedirectView.as_view(url='accounts:password_reset_confirm'),name='password_reset_confirm'),
-
+    path('password_reset/done',RedirectView.as_view(pattern_name='accounts:password_reset_done'),name='password_reset_done'),
+    path('reset/<uidb64>/<token>/',RedirectView.as_view(pattern_name='accounts:password_reset_confirm'),name='password_reset_confirm'),
+    path('reset/done',RedirectView.as_view(pattern_name='accounts:password_reset_complete'),name='password_reset_complete'),
 ]
