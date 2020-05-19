@@ -1,8 +1,9 @@
 # accounts.forms.py
 from django import forms
 from django.contrib.auth.forms import ReadOnlyPasswordHashField
-
 from .models import User
+from django.forms.models import inlineformset_factory
+from .models import Profile
 
 
 class RegisterForm(forms.ModelForm):
@@ -74,3 +75,10 @@ class UserAdminChangeForm(forms.ModelForm):
         # This is done here, rather than on the field, because the
         # field does not have access to the initial value
         return self.initial["password"]
+
+
+ProfileFormSet = inlineformset_factory(
+    User,Profile,
+    fields={'first_name','last_name','address','phone_number'},
+    can_delete=False
+)
