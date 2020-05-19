@@ -5,6 +5,7 @@ from django.contrib.auth.models import BaseUserManager, AbstractBaseUser
 from django.contrib.auth.models import User
 from django.db.models.signals import post_save
 from django.dispatch import receiver
+from django.contrib.auth import get_user_model
 
 
 class UserManager(BaseUserManager):
@@ -102,7 +103,7 @@ class User(AbstractBaseUser):
         return self.is_active
 
 class Profile(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    user = models.OneToOneField(User, on_delete=models.CASCADE,blank=True, null=True)
     first_name = models.CharField(max_length=30, blank=True, null=True)
     last_name = models.CharField(max_length=30, blank=True, null=True)
     address = models.CharField(max_length=30, blank=True, null=True)

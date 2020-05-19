@@ -6,19 +6,20 @@
 
 {% block content %}
     <div class="container text-monospace">
-        <div class="jumbotron">
+        <div class="Jumbotron">
 			<svg class="bi bi-person-square" width="2em" height="3em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
 				<path fill-rule="evenodd" d="M14 1H2a1 1 0 00-1 1v12a1 1 0 001 1h12a1 1 0 001-1V2a1 1 0 00-1-1zM2 0a2 2 0 00-2 2v12a2 2 0 002 2h12a2 2 0 002-2V2a2 2 0 00-2-2H2z" clip-rule="evenodd"/>
 				<path fill-rule="evenodd" d="M2 15v-1c0-1 1-4 6-4s6 3 6 4v1H2zm6-6a3 3 0 100-6 3 3 0 000 6z" clip-rule="evenodd"/>
 			</svg>
-			<h1>Profile</h1>
-			<hr>
-            <p>First Name: {{user.profile.first_name}}</p>
-			<p>Last Name: {{user.profile.last_name}}</p>
-			<p>Email: {{user.email}}</p>
-            <p>Address: {{user.profile.address}}</p>
-            <p>Phone Number: {{user.profile.phone_number}}</p>
-            <a class="btn btn-primary" href="{% url 'accounts:edit'%}">Edit</a>
+            <h1>Profile</h1>
+            <form action="" method="post">
+                {% csrf_token %}
+                bo
+                {{form.as_p}}
+                {{profile.as_p}}
+                <button class="btn btn-primary" type="submit">Save</button>
+            </form>
+           
         </div>
     </div>
 {% endblock content %}

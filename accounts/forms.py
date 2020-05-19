@@ -4,6 +4,7 @@ from django.contrib.auth.forms import ReadOnlyPasswordHashField
 from .models import User
 from django.forms.models import inlineformset_factory
 from .models import Profile
+from django.contrib.auth import get_user_model
 
 
 class RegisterForm(forms.ModelForm):
@@ -78,7 +79,7 @@ class UserAdminChangeForm(forms.ModelForm):
 
 
 ProfileFormSet = inlineformset_factory(
-    User,Profile,
-    fields={'first_name','last_name','address','phone_number'},
+    get_user_model(),Profile,
+    fields=('first_name','last_name','address','phone_number'),
     can_delete=False
 )
