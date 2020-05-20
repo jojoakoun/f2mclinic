@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+{% load static %}
+{% load bootstrap4 %}
+
+{% block content %}
+	<div class="container text-monospace">
+		<div class="jumbotron">
+			<div class="row align-items-center">
+				<div class="col-1">First Name</div>
+				<div class="col-1">Last Name</div>
+				<div class="col-3">Email </div>
+				<div class="col-3">Address</div>
+				<div class="col-2">Phone number</div>
+				<div class="col-2"> <button class="btn btn-danger" type="submit">add user</button> </div>
+			</div>
+			<hr>
+
+			{% for user in user_list  %}
+			<div class="row align-items-center">
+				<div class="col-1">{{user.first_name}}</div>
+				<div class="col-1">{{user.last_name}}</div>
+				<div class="col-3">{{user.user.email}}</div>
+				<div class="col-3">{{user.address}}</div>
+				<div class="col-2">{{user.phone_number}}</div>
+				<div class="col-2"><button class="btn btn-primary" type="submit">See</button>  <button class="btn btn-primary" type="submit">delete</button></div>
+			</div>
+			{% endfor %}
+		</div>
+			
+	</div>
+{% endblock content %}

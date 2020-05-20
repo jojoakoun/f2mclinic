@@ -3,7 +3,7 @@ from django.urls import reverse_lazy
 from .models import Profile
 from django.contrib.auth import get_user_model
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.views.generic import DetailView,UpdateView
+from django.views.generic import DetailView,UpdateView,ListView
 from .forms import ProfileFormSet
 # Create your views here.
 
@@ -41,3 +41,14 @@ class EditProfileView(LoginRequiredMixin,UpdateView):
             profile.updated_by = self.request.user
             profile.save()
         return super().form_valid(form)
+
+class UserListView(LoginRequiredMixin,ListView):
+    model = Profile
+    template_name = 'accounts/user_list_page.html'
+    context_object_name = 'user_list'
+
+    def get_queryset(self):
+        user_list = Profile.objects.all().order_by('first_name')
+        return user_list
+
+    
