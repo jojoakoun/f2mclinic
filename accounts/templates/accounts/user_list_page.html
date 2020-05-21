@@ -12,18 +12,18 @@
 				<div class="col-3">Email </div>
 				<div class="col-3">Address</div>
 				<div class="col-2">Phone number</div>
-				<div class="col-2"> <button class="btn btn-danger" type="submit">add user</button> </div>
+				<div class="col-2"><a class="btn btn-primary" href="{% url 'accounts:add_user' %}">Add user</a></div>
 			</div>
 			<hr>
 
-			{% for user in user_list  %}
+			{% for profile in profile_list  %}
 			<div class="row align-items-center">
-				<div class="col-1">{{user.first_name}}</div>
-				<div class="col-1">{{user.last_name}}</div>
-				<div class="col-3">{{user.user.email}}</div>
-				<div class="col-3">{{user.address}}</div>
-				<div class="col-2">{{user.phone_number}}</div>
-				<div class="col-2"><button class="btn btn-primary" type="submit">See</button>  <button class="btn btn-primary" type="submit">delete</button></div>
+				<div class="col-1">{{profile.first_name}}</div>
+				<div class="col-1">{{profile.last_name}}</div>
+				<div class="col-3">{{profile.user.email}}</div>
+				<div class="col-3">{{profile.address}}</div>
+				<div class="col-2">{{profile.phone_number}}</div>
+				<div class="col-2"><a class="btn btn-primary" href="{% url  'accounts:show_user' id=profile.user.id%}">Show</a> <a class="btn btn-primary" href="{% url 'accounts:edit_user' id=profile.user.id%}">Edit</a></div>
 			</div>
 			{% endfor %}
 		</div>
