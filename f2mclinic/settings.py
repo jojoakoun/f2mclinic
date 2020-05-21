@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/3.0/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.0/ref/settings/
 """
-
+from django.contrib.messages import constants as message_constants
 import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -135,3 +135,12 @@ EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST ='127.0.0.1'
 EMAIL_PORT = 1025
 EMAIL_FILE_PATH = os.path.join(BASE_DIR, "sent_emails")
+
+
+MESSAGE_TAGS = {
+                message_constants.DEBUG: 'debug', 
+                message_constants.INFO: 'info', 
+                message_constants.SUCCESS: 'success',
+                message_constants.WARNING: 'warning', 
+                message_constants.ERROR: 'danger',
+                }

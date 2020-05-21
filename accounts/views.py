@@ -6,6 +6,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import DetailView,UpdateView,ListView,CreateView
 from .forms import ProfileFormSet
 from django.db import transaction
+from .decorators import AdminUserRequiredMixin
 # Create your views here.
 
 class ProfileView(LoginRequiredMixin,DetailView):
@@ -14,16 +15,16 @@ class ProfileView(LoginRequiredMixin,DetailView):
     def get_object(self):
         return get_object_or_404(get_user_model(),pk=self.request.user.id)
 
-class ShowUserView(LoginRequiredMixin,DetailView):
+class ShowUserView(LoginRequiredMixin,AdminUserRequiredMixin,DetailView):
     template_name='accounts/show_user.html'
 
     def get_object(self):
         id = self.kwargs.get('id')
         return get_object_or_404(get_user_model(),pk=id)
 
-class EditUserView(LoginRequiredMixin,UpdateView):
+class EditUserView(LoginRequiredMixin,AdminUserRequiredMixin,UpdateView):
     model = get_user_model()
-    fields = []
+    fields = ['admin']
     template_name = 'accounts/edit_profile.html'
     success_url = reverse_lazy('accounts:user_list')
 
@@ -79,7 +80,7 @@ class EditProfileView(LoginRequiredMixin,UpdateView):
             profile.save()
         return super().form_valid(form)
 
-class UserListView(LoginRequiredMixin,ListView):
+class UserListView(LoginRequiredMixin,AdminUserRequiredMixin,ListView):
     template_name = 'accounts/user_list_page.html'
     context_object_name = 'profile_list'
 
@@ -87,10 +88,10 @@ class UserListView(LoginRequiredMixin,ListView):
         profile_list = Profile.objects.all().order_by('first_name')
         return profile_list
 
-class AddUserView(LoginRequiredMixin,CreateView):
+class AddUserView(LoginRequiredMixin,AdminUserRequiredMixin,CreateView):
     model = get_user_model()
     template_name = 'accounts/add_user.html'
-    fields = ['email']
+    fields = ['email','admin']
     success_url = reverse_lazy('accounts:user_list')
 
     def get_object(self):

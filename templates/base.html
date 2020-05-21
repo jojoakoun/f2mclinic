@@ -25,7 +25,10 @@
 						</a>
 						<div class="dropdown-menu" aria-labelledby="navbarDropdown">
 							<a class="dropdown-item" href="{% url 'accounts:profile'%}">My Profile</a>
-							<a class="dropdown-item" href="{% url 'accounts:user_list'%}">User List</a>
+							
+							{% if request.user.admin %}
+								<a class="dropdown-item" href="{% url 'accounts:user_list'%}">User List</a>	
+							{% endif %}
 							<div class="dropdown-divider"></div>
 							<a class="dropdown-item" href="{% url 'accounts:logout'%}">Logout</a>
 						</div>
@@ -51,7 +54,7 @@
 			<div class="collapse navbar-collapse font-weight-bolder " id="navbarSupportedContent">
 				<ul class="navbar-nav mr-auto">
 					<li class="nav-item active">
-					<a class="nav-link" href="#">F2mclinic<span class="sr-only">(current)</span></a>
+					<a class="nav-link" href="{% url 'home'%}">F2mclinic<span class="sr-only">(current)</span></a>
 					</li>	
 				</ul>
 				<div class="form-inline my-2 my-lg-3 text-primary h6 ">
@@ -67,6 +70,20 @@
 			</div>
 		{% endif %}
 	</nav>
+	
+	{% if messages %}
+		<ul class="messages text-monospace">
+			{% for msg in messages %}
+			  <li>
+				  <div class="alert alert-{{msg.level_tag}}" role="alert">
+					   {{msg.message}}  
+				  </div>
+			  </li>
+			{% endfor %}
+		</ul>
+		
+	{% endif %}
+		
 	
 	{% block content %}
 	  
