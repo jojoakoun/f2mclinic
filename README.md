@@ -13,10 +13,10 @@ Créer une application Customer Relationship Management pour la clinique F2M.
 
 ## Les actions
   Il sera possible d'effectuer plusieurs actions definies ci dessous:
-   - Créer, modifier un utilisateur (1)
-   - Consulter un utilisateur (2)
+   √ Créer, modifier un utilisateur (1)
+   √ Consulter un utilisateur (2)
    - supprimer un utilisateur (3)
-   - Assigner un profil à un utilisateur (4)
+   √ Assigner un profil à un utilisateur (4)
    - Revoquer les accès d'un utilisateur (5)
    - Réactiver les accès d'un utilisateur (6)
    - Consulter une entreprise (7)

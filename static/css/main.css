@@ -71,6 +71,7 @@
 	display: inline-block;
 	border-radius: 4px;
 	margin: 2px;
+
   }
   
   .page-wrapper .theme.chiller-theme {
@@ -81,6 +82,7 @@
   
   .page-wrapper.toggled .sidebar-wrapper {
 	left: 0px;
+	
   }
   
   @media screen and (min-width: 768px) {
@@ -110,6 +112,7 @@
 	top: 0;
 	left: -300px;
 	z-index: 999;
+
   }
   
   .sidebar-wrapper ul {
@@ -359,6 +362,9 @@
   
   .page-wrapper .page-content > div {
 	padding: 20px 40px;
+	font-size: medium;
+    font-family: 'Open Sans', sans-serif;
+	
   }
   
   .page-wrapper .page-content {
@@ -405,13 +411,16 @@
   /*-----------------------------chiller-theme-------------------------------------------------*/
   
   .chiller-theme .sidebar-wrapper {
-	  background: #31353D;
+	  background-color:#050129f2;
+	  font-family: 'Roboto', sans-serif;
+	  font-size: medium;
   }
   
   .chiller-theme .sidebar-wrapper .sidebar-header,
   .chiller-theme .sidebar-wrapper .sidebar-search,
   .chiller-theme .sidebar-wrapper .sidebar-menu {
 	  border-top: 1px solid #3a3f48;
+	  
   }
   
   .chiller-theme .sidebar-wrapper .sidebar-search input.search-menu,
@@ -462,7 +471,7 @@
   }
   
   .chiller-theme .sidebar-wrapper .sidebar-menu .header-menu span {
-	  color: #6c7b88;
+	  color: #747c8b;
   }
   
   .chiller-theme .sidebar-footer {
@@ -479,3 +488,22 @@
 	  border-right: none;
   }
   
+.container {
+	margin: 0 30px;
+}
+
+#mybutton {
+	background-color:#050129f2;
+}
+
+#mylogin {
+	font-family: 'Open Sans', sans-serif;
+}
+
+#link {
+	color:#050129f2;
+}
+
+.userdetail {
+	margin-top: 20px;
+}
