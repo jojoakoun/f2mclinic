@@ -16,9 +16,8 @@
             <p>First Name: {{user.profile.first_name}}</p>
 			<p>Last Name: {{user.profile.last_name}}</p>
 			<p>Email: {{user.email}}</p>
-            <p>Address: {{user.profile.address}}</p>
             <p>Phone Number: {{user.profile.phone_number}}</p>
-            <a class="btn btn-primary" id="mybutton" href="{% url 'accounts:edit_profile'%}">Edit</a>
+            <a class="btn btn-primary mybutton" href="{% url 'accounts:edit_profile'%}">Edit</a>
         </div>
     </div>
 {% endblock content %}

@@ -10,9 +10,8 @@
 				<div class="col-1">First Name</div>
 				<div class="col-1">Last Name</div>
 				<div class="col-3">Email </div>
-				<div class="col-3">Address</div>
-				<div class="col-2">Phone number</div>
-				<div class="col-2"><a class="btn btn-primary" id="mybutton" href="{% url 'accounts:add_user' %}">Add user</a></div>
+				<div class="col-3">Phone number</div>
+				<div class="col-4"><a class="btn btn-primary mybutton" href="{% url 'accounts:add_user' %}">Add user</a></div>
 			</div>
 			<hr>
 
@@ -21,9 +20,8 @@
 				<div class="col-1">{{profile.first_name}}</div>
 				<div class="col-1">{{profile.last_name}}</div>
 				<div class="col-3">{{profile.user.email}}</div>
-				<div class="col-3">{{profile.address}}</div>
-				<div class="col-2">{{profile.phone_number}}</div>
-				<div class="col-2"><a class="btn btn-primary" id="mybutton" href="{% url  'accounts:show_user' id=profile.user.id%}">Show</a> <a class="btn btn-primary" id="mybutton" href="{% url 'accounts:edit_user' id=profile.user.id%}">Edit</a></div>
+				<div class="col-3">{{profile.phone_number}}</div>
+				<div class="col-4"><a class="btn btn-primary mybutton"  href="{% url  'accounts:show_user' id=profile.user.id%}">Show</a> <a class="btn btn-primary mybutton"  href="{% url 'accounts:edit_user' id=profile.user.id%}">Edit</a> <a class="btn btn-primary mybutton psg" href="{% url 'accounts:delete_user' pk=profile.user.id%}">Delete</a></div>
 			</div>
 			{% endfor %}
 		</div>

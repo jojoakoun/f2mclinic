@@ -80,6 +80,6 @@ class UserAdminChangeForm(forms.ModelForm):
 
 ProfileFormSet = inlineformset_factory(
     get_user_model(),Profile,
-    fields=('first_name','last_name','address','phone_number'),
+    fields=('first_name','last_name','phone_number'),
     can_delete=False
 )

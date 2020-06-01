@@ -27,9 +27,15 @@ $("#close-sidebar").click(function() {
 });
 $("#show-sidebar").click(function() {
   $(".page-wrapper").addClass("toggled");
+}); 
+   
 });
 
 
-   
-   
-});
+$('.psg').on("click", function(event) {
+  event.preventDefault();
+  var result = confirm("Are you sure?");
+  if (result === true) {
+    window.location.href = $(this).attr('href')
+  } 
+})

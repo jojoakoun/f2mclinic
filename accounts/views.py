@@ -1,9 +1,9 @@
-from django.shortcuts import render,get_object_or_404
+from django.shortcuts import render,get_object_or_404, HttpResponseRedirect
 from django.urls import reverse_lazy
 from .models import Profile
 from django.contrib.auth import get_user_model
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.views.generic import DetailView,UpdateView,ListView,CreateView
+from django.views.generic import DetailView,UpdateView,ListView,CreateView,DeleteView,View
 from .forms import ProfileFormSet
 from django.db import transaction
 from .decorators import AdminUserRequiredMixin
@@ -29,7 +29,7 @@ class EditUserView(LoginRequiredMixin,AdminUserRequiredMixin,UpdateView):
     success_url = reverse_lazy('accounts:user_list')
 
     def get_object(self):
-        id = self.kwargs.get('id')
+        id = self.kwargs.get('id') 
         return get_object_or_404(get_user_model(),pk=id)
 
     def get_context_data(self, **kwargs):
@@ -116,3 +116,15 @@ class AddUserView(LoginRequiredMixin,AdminUserRequiredMixin,CreateView):
                 profile.created_by = self.request.user
                 profile.save()
         return super().form_valid(form)
+
+
+class DeleteUserView(LoginRequiredMixin,AdminUserRequiredMixin,View):
+
+    def get(self, request,*args, **kwargs):
+        id = self.kwargs.get('pk') 
+        self.object = get_object_or_404(get_user_model(),pk=id)
+        success_url = reverse_lazy('accounts:user_list')
+        self.object.delete()
+        return HttpResponseRedirect(success_url)
+
+         

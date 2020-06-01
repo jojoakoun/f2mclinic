@@ -17,5 +17,5 @@ urlpatterns = [
 	path('add_user/',views.AddUserView.as_view(),name='add_user'),
 	path('show_user/<int:id>',views.ShowUserView.as_view(),name='show_user'),
 	path('edit_user/<int:id>',views.EditUserView.as_view(),name='edit_user'),
-	
+	path('delete_user/<int:pk>',views.DeleteUserView.as_view(),name='delete_user'),
 ]
