@@ -14,3 +14,11 @@ class AdminUserRequiredMixin(object):
 		return super(AdminUserRequiredMixin, self).dispatch(request, *args, **kwargs)
 	
 
+class EnableUserRequiredMixin(object):
+
+	@method_decorator(login_required)
+	def dispatch(self, request, *args, **kwargs):
+		if not request.user.enable:
+			messages.error(request,"Sorry but you don't have the right to access to the application")
+			return redirect('accounts:login')
+		return super(EnableUserRequiredMixin, self).dispatch(request, *args, **kwargs)
