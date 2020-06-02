@@ -16,6 +16,18 @@
 </head>
 <body style="margin:auto">
 	<div class="container">
+		{% if messages %}
+			<ul class="messages text-monospace">
+				{% for msg in messages %}
+				<li>
+					<div class="alert alert-{{msg.level_tag}}" role="alert">
+						{{msg.message}}  
+					</div>
+				</li>
+				{% endfor %}
+			</ul>	
+		{% endif %}
+
 		{% block content %}
 	  
 		{% endblock content %}

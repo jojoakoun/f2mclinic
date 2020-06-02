@@ -3,6 +3,7 @@ from django.utils.decorators import method_decorator
 from django.contrib import messages
 from django.shortcuts import redirect
 from .models import *
+from django.contrib.auth import logout
 
 class AdminUserRequiredMixin(object):
 
@@ -20,5 +21,5 @@ class EnableUserRequiredMixin(object):
 	def dispatch(self, request, *args, **kwargs):
 		if not request.user.enable:
 			messages.error(request,"Sorry but you don't have the right to access to the application")
-			return redirect('accounts:login')
+			logout(request)
 		return super(EnableUserRequiredMixin, self).dispatch(request, *args, **kwargs)
