@@ -6,7 +6,7 @@ beautifulsoup4==4.9.0
 certifi==2019.11.28
 cffi==1.14.0
 cuser==0.0.4
-Django==2.2.10
+Django==2.2.13
 django-bootstrap3==12.0.3
 django-bootstrap4==1.1.1
 django-cuser==2017.3.16
